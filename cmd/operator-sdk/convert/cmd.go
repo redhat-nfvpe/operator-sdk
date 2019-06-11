@@ -56,15 +56,40 @@ func convertFuncPlaceholder(cmd *cobra.Command, args []string) error {
 	return nil
 }
 
+// to locate the input operator, need the organization and the project name
+// to create the new output operator, need the new organization and the new project name
+// if the new organization and the new project name are the same, then prepend "ansible-" to the project name
+
 var (
-	inputOperatorType  string
-	inputOperatorPath  string
-	outputOperatorType string
-	projectName        string
-	generatePlaybook   bool
-	helmChartRef       string
-	helmChartVersion   string
-	helmChartRepo      string
+	// // will remove; use organization and name instead
+	// inputOperatorPath string
+
+	// new variables ================================
+	inputOperatorOrganization  string
+	inputOperatorProjectName   string
+	inputHelmRepo              bool
+	inputHelmChartRef          string
+	inputHelmChartVersion      string
+	inputHelmChartRepo         string
+	outputOperatorOrganization string
+	outputOperatorProjectName  string
+	generatePlaybook           bool
+
+	// // will remove; output type is always ansible
+	// outputOperatorType string
+
+	// // will remove; use inputOperatorProjectName instead
+	// projectName string
+
+	// generatePlaybook bool
+	// // will remove; use inputHelmChartRef instead
+	// helmChartRef string
+
+	// // will remove; use inputHelmChartRef instead
+	// helmChartVersion string
+
+	// // will remove; use inputHelmChartRef instead
+	// helmChartRepo string
 )
 
 func convertFunc(cmd *cobra.Command, args []string) error {
